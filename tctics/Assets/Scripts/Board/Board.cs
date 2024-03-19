@@ -16,23 +16,23 @@ public class Board : MonoBehaviour
         grid = GetComponent<Grid>();
     }
 
-    private void Start()
+
+    public IEnumerator InitSequence(LoadState loadState)
     {
-        InitSequence();
+        yield return StartCoroutine(LoadFloors(loadState));
+        yield return null;
         Debug.Log("foram criados -" + tiles.Count + " - tiles");
         ShadowOrdering();
+        yield return null;
+
     }
 
-    public void InitSequence()
-    {
-        LoadFloors();
-    }
-
-    void LoadFloors()
+    IEnumerator LoadFloors(LoadState loadState)
     {
         for (int i = 0; i < floors.Count; i++)
         {
             List<Vector3Int> floorTiles = floors[i].LoadTiles();
+            yield return null;
             for (int j = 0; j < floorTiles.Count; j++)
             {
                 if (!tiles.ContainsKey(floorTiles[j]))
