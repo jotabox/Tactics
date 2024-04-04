@@ -14,7 +14,8 @@ public class LoadState : State
     IEnumerator LoadSequence()
     {
         yield return StartCoroutine(Board.instance.InitSequence(this));
-
+        yield return null;
+        MapLoader.Instance.CreateUnit();
         yield return null;
         StateMachineController.Instance.ChangeTo<RoamState>();
     }

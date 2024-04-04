@@ -6,7 +6,7 @@ public class SelectorSprite : MonoBehaviour
 {
 
     public static SelectorSprite instance;
-    public Vector3Int position;
+    public Vector3Int position {get { return tileLogic.pos; } }
     public TileLogic tileLogic;
     
     [HideInInspector]public SpriteRenderer spriteRenderer;

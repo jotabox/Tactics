@@ -28,7 +28,6 @@ public class RoamState : State
 
         if (tile != null)
         {
-            SelectorSprite.instance.position = tile.pos;
             SelectorSprite.instance.tileLogic = tile;
             SelectorSprite.instance.spriteRenderer.sortingOrder = tile.contentOrder;
             SelectorSprite.instance.transform.position = tile.worldPos;
@@ -38,11 +37,10 @@ public class RoamState : State
 
     void CheckNullPosition()
     {
-        if(SelectorSprite.instance.position == null)
+        if(SelectorSprite.instance.tileLogic == null)
         {
             TileLogic tile = Board.GetTile(new Vector3Int(0, 0, 0));
 
-            SelectorSprite.instance.position = tile.pos;
             SelectorSprite.instance.tileLogic = tile;
             SelectorSprite.instance.spriteRenderer.sortingOrder = tile.contentOrder;
             SelectorSprite.instance.transform.position = tile.worldPos;
